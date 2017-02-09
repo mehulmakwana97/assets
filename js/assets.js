@@ -8,10 +8,12 @@
       var item = $(value).data(pItem);
       var style = {};
       if(item !== '' && item !== undefined) {
-        item.split(' ').each(function(ckey, cvalue) {
-          var itemTo = ckey.split('-');
+        var mItems = item.split(' ');
+        $.each(mItems, function(ckey, cvalue) {
+          var itemTo = cvalue.split('-');
           if(itemTo.length > 0) {
-            style[pItem + '-' + itemTo[0]] = itemTo[1];
+            if(itemTo[1] !== undefined)
+              style[pItem + '-' + itemTo[0]] = itemTo[1];
           }
         });
 
